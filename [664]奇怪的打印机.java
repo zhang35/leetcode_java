@@ -41,9 +41,12 @@ class Solution {
     public int strangePrinter(String s) {
         int n = s.length();
         int[][] dp = new int[n][n];
-        for (int i=n-1; i>=0; i--){
+        for (int i=0; i<n; i++){
             dp[i][i] = 1;
-            for (int j=i+1; j<n; j++) {
+        }
+        for (int len=1; len<n-1; len++){
+            for (int i=0; i+len<n; i++){
+                int j = i + len;
                 if (s.charAt(i) == s.charAt(j)){
                     dp[i][j] = dp[i][j-1];
                 }
